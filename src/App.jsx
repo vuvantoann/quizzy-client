@@ -1,7 +1,12 @@
-import './App.css'
+import AllRoute from './routes'
+import './styles/main.scss'
 
 function App() {
-  return <>APP</>
+  return (
+    <>
+      <AllRoute />
+    </>
+  )
 }
 
 export default App

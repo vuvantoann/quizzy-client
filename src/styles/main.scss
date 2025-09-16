@@ -1,0 +1,21 @@
+// Import tất cả file SCSS chung
+@use './variables' as *;
+
+// Reset cơ bản
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-base;
+  font-size: $font-size-base;
+  background-color: #fff;
+  color: $color-black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

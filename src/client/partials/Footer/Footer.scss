@@ -1,0 +1,97 @@
+@use '../../../styles/variables' as *;
+.footer {
+  background-color: $color-bg-footer;
+  width: 100%;
+  padding: 40px;
+  font-family: sans-serif;
+  color: $color-black;
+  font-size: 14px;
+
+  .footer__top {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer__branding {
+    max-width: 240px;
+
+    .footer__logo {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: $color-text-main;
+    }
+
+    .footer__status {
+      display: flex;
+      align-items: center;
+      // background-color: $color-white;
+      border: 1px solid $color-border-default;
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 13px;
+      width: fit-content;
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: $color-success;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+
+    .footer__column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      a {
+        color: $color-black;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 1px solid $color-border-default;
+    padding-top: 20px;
+    font-size: 13px;
+    color: $color-text-muted;
+
+    .footer__bottom-links {
+      display: flex;
+      gap: 20px;
+
+      a {
+        color: $color-text-muted;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
