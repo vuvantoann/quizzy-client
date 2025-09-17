@@ -10,6 +10,7 @@ import Topic from '../client/pages/Topic'
 import Practice from '../client/pages/Practice'
 import PracticeHistory from '../client/pages/PracticeHistory'
 import Result from '../client/pages/Result'
+import Logout from '../client/pages/Logout'
 
 export const routes = [
   {
@@ -27,6 +28,10 @@ export const routes = [
       {
         path: 'register',
         element: <Register />,
+      },
+      {
+        path: 'logout',
+        element: <Logout />,
       },
       {
         path: '',

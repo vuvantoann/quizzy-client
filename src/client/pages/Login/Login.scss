@@ -1,0 +1,86 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+
+  &__card {
+    width: 350px;
+    padding: 40px 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: bold;
+  }
+
+  &__form {
+    .ant-input-affix-wrapper {
+      border-radius: 25px;
+      padding: 6px 12px;
+    }
+
+    .ant-input {
+      background: transparent;
+      color: #fff;
+
+      &::placeholder {
+        color: #ddd;
+      }
+    }
+
+    .ant-input-password {
+      border-radius: 25px;
+    }
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+
+  &__checkbox {
+    color: white;
+
+    .ant-checkbox-inner {
+      background-color: transparent;
+      border-color: white;
+    }
+  }
+
+  &__forgot {
+    color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__button {
+    border-radius: 25px;
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+  }
+
+  &__register {
+    color: #ffd700;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
