@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox, message } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { MailOutlined, LockOutlined } from '@ant-design/icons'
 import './Login.scss'
-import { login } from '../../services/productService'
-import { useNavigate } from 'react-router-dom'
+import { login } from '../../services/users'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { setCookie } from '../../../helpers/cookie'
 import { useDispatch } from 'react-redux'
 import { checkLogin } from '../../actions/login'
@@ -53,13 +53,13 @@ function Login() {
             initialValues={{ remember: true }}
             className="login__form"
           >
-            {/* Username */}
+            {/* email */}
             <Form.Item
               name="email"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input
-                prefix={<UserOutlined />}
+                prefix={<MailOutlined />}
                 placeholder="email"
                 size="large"
               />
@@ -107,9 +107,9 @@ function Login() {
 
           <div className="login__footer">
             Don’t have an account?{' '}
-            <a href="#" className="login__register">
+            <NavLink to="/register" className="login__register">
               Register
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
