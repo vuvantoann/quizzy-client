@@ -5,22 +5,25 @@ import './Login.scss'
 import { login } from '../../services/productService'
 import { useNavigate } from 'react-router-dom'
 import { setCookie } from '../../../helpers/cookie'
+import { useDispatch } from 'react-redux'
+import { checkLogin } from '../../actions/login'
 
 function Login() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage()
   const onFinish = async (values) => {
     try {
       const result = await login(values)
-      console.log(result)
 
       if (result.code === 200) {
-        setCookie('token', result.token, 1)
-        navigate('/')
         messageApi.open({
           type: 'success',
           content: result.message, // ✅ lấy từ backend
         })
+        setCookie('token', result.token, 1)
+        dispatch(checkLogin(true))
+        navigate('/')
       } else {
         messageApi.open({
           type: 'error',

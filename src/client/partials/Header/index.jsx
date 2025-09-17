@@ -2,10 +2,12 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 
 import './Header.scss'
 import { getCookie } from '../../../helpers/cookie'
+import { useSelector } from 'react-redux'
 
 function Header() {
   const token = getCookie('token')
-  console.log(token)
+  const isLogin = useSelector((state) => state.loginReducer)
+
   return (
     <header className="header header--solid">
       <div className="header__container">
