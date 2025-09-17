@@ -5,19 +5,19 @@ function Footer() {
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__branding">
-          <div className="footer__logo">EXPLORE</div>
-          <p>Explore the world your way</p>
+          <div className="footer__logo">QUIZZY</div>
+          <p>Challenge your mind, test your knowledge</p>
           <div className="footer__status">
             <span className="status-dot"></span>
-            <span>Booking platform running smoothly</span>
+            <span>Platform running smoothly</span>
           </div>
         </div>
 
         <div className="footer__links">
           <div className="footer__column">
-            <a href="#">Destinations</a>
-            <a href="#">Tours</a>
-            <a href="#">Packages</a>
+            <a href="#">Quizzes</a>
+            <a href="#">Categories</a>
+            <a href="#">Leaderboard</a>
             <a href="#">Blog</a>
             <a href="#">About Us</a>
           </div>
@@ -35,7 +35,7 @@ function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <p>© 2025 EXPLORE. All rights reserved.</p>
+        <p>© 2025 QUIZZY. All rights reserved.</p>
         <div className="footer__bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms & Conditions</a>

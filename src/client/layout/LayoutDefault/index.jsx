@@ -8,10 +8,9 @@ function LayoutDefault() {
       <Header />
       <main
         className="main"
-        style={{
-          marginTop: '50px',
-          padding: '80px',
-        }}
+        // style={{
+        //   marginTop: '150px',
+        // }}
       >
         <Outlet />
       </main>

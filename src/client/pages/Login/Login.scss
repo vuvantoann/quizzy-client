@@ -1,23 +1,25 @@
 .login {
+  margin-top: 50px;
+  padding: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+  background: #f5f7fa;
 
   &__card {
     width: 350px;
     padding: 40px 30px;
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     margin: 10px;
   }
 
   &__title {
     text-align: center;
     margin-bottom: 30px;
-    color: white;
+    color: #2c3e50;
     font-weight: bold;
   }
 
@@ -25,14 +27,22 @@
     .ant-input-affix-wrapper {
       border-radius: 25px;
       padding: 6px 12px;
+      border: 1px solid #dcdde1;
+      transition: all 0.3s ease;
+
+      &:hover,
+      &:focus-within {
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+      }
     }
 
     .ant-input {
       background: transparent;
-      color: #fff;
+      color: #2c3e50;
 
       &::placeholder {
-        color: #ddd;
+        color: #7f8c8d;
       }
     }
 
@@ -45,20 +55,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: #2c3e50;
   }
 
   &__checkbox {
-    color: white;
+    color: #2c3e50;
 
     .ant-checkbox-inner {
-      background-color: transparent;
-      border-color: white;
+      background-color: #fff;
+      border-color: #95a5a6;
+    }
+
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: #3498db;
+      border-color: #3498db;
     }
   }
 
   &__forgot {
-    color: white;
+    color: #2980b9;
 
     &:hover {
       text-decoration: underline;
@@ -67,20 +82,29 @@
 
   &__button {
     border-radius: 25px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #2980b9;
+    }
   }
 
   &__footer {
     text-align: center;
     margin-top: 10px;
-    color: white;
+    color: #7f8c8d;
   }
 
   &__register {
-    color: #ffd700;
+    color: #e67e22;
     font-weight: bold;
 
     &:hover {
       text-decoration: underline;
+      color: #d35400;
     }
   }
 }
