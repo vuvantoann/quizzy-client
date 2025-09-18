@@ -1,0 +1,52 @@
+.topic {
+  margin-top: 80px;
+  margin-bottom: 50px;
+  padding: 32px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  &__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  &__table {
+    font-size: 16px;
+
+    .ant-table {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .ant-table-thead > tr > th {
+      background: #f5f7fa;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .ant-table-tbody > tr > td {
+      text-align: center;
+      padding: 16px;
+    }
+
+    .ant-btn-primary {
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 20px;
+      box-shadow: 0 3px 8px rgba(22, 119, 255, 0.3);
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(22, 119, 255, 0.4);
+      }
+    }
+  }
+}
