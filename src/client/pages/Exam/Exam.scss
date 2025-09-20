@@ -1,0 +1,152 @@
+.exam {
+  margin-top: 100px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f9f9fb;
+
+  &__sidebar {
+    flex: 0 0 220px;
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    &-title {
+      margin-bottom: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  &__number {
+    border: 2px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #f0f4ff;
+      border-color: #3b82f6;
+    }
+
+    &.active {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+    }
+
+    &.answered {
+      background: #d1fae5;
+      border-color: #10b981;
+      font-weight: 600;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__question {
+    margin-bottom: 24px;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__answer-btn {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+
+    &:hover {
+      background: #eff6ff;
+      border-color: #3b82f6;
+    }
+
+    &.selected {
+      background: #dbeafe;
+      border-color: #3b82f6;
+      font-weight: 600;
+      color: #1e40af;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  &__btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #3b82f6;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+
+    &:hover {
+      background: #2563eb;
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    &--submit {
+      background: #10b981;
+
+      &:hover {
+        background: #059669;
+      }
+    }
+  }
+}
