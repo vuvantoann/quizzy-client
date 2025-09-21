@@ -4,7 +4,6 @@ const API_DOMAIN = 'http://localhost:3000/'
 
 const withAuthHeader = (headers = {}) => {
   const token = getCookie('token')
-  console.log('token', token)
   return token ? { ...headers, Authorization: `Bearer ${token}` } : headers
 }
 
