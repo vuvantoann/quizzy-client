@@ -1,6 +1,6 @@
 import { getCookie } from '../helpers/cookie'
 
-const API_DOMAIN = 'http://localhost:3000/'
+const API_DOMAIN = 'https://quizzy-api-one.vercel.app/'
 
 const withAuthHeader = (headers = {}) => {
   const token = getCookie('token')
@@ -21,6 +21,7 @@ export const post = async (path, data) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      ...withAuthHeader(),
     },
     body: JSON.stringify(data),
   })
@@ -35,6 +36,7 @@ export const patch = async (path, data) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      ...withAuthHeader(),
     },
     body: JSON.stringify(data),
   })

@@ -96,15 +96,30 @@ function Exam() {
   }
 
   const handleSubmit = async () => {
-    const result = await getUserDetail()
-    const payload = {
-      userId: result.infoUser._id, // TODO: lấy từ login/token
-      topicId: params.id,
-      answers: selectedAnswers,
-    }
-    const respond = await saveAnswer(payload)
-    if (respond) {
-      navigate(`/result/${respond.data._id}`)
+    try {
+      const result = await getUserDetail()
+      // Lấy userId an toàn
+      const userId = result?.infoUser?._id || result?._id
+      if (!userId) {
+        throw new Error('Không tìm thấy userId trong getUserDetail')
+      }
+
+      const payload = {
+        userId,
+        topicId: params.id,
+        answers: selectedAnswers,
+      }
+
+      const respond = await saveAnswer(payload)
+
+      const resultId = respond?.data?._id || respond?._id
+      if (!resultId) {
+        throw new Error('Không tìm thấy resultId trong saveAnswer response')
+      }
+
+      navigate(`/result/${resultId}`)
+    } catch (err) {
+      console.error('handleSubmit error:', err)
     }
   }
 
