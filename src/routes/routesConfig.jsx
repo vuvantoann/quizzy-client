@@ -7,10 +7,10 @@ import Error404 from '../client/pages/Error404'
 import Login from '../client/pages/Login'
 import Register from '../client/pages/Register'
 import Topic from '../client/pages/Topic'
-import PracticeHistory from '../client/pages/PracticeHistory'
 import Result from '../client/pages/Result'
 import Logout from '../client/pages/Logout'
 import Exam from '../client/pages/Exam'
+import Answer from '../client/pages/Answer'
 
 export const routes = [
   {
@@ -46,12 +46,13 @@ export const routes = [
             element: <Exam />,
           },
           {
-            path: 'practice-history',
-            element: <PracticeHistory />,
-          },
-          {
-            path: 'Result',
+            path: 'result/:id',
             element: <Result />,
+          },
+
+          {
+            path: 'answer',
+            element: <Answer />,
           },
         ],
       },

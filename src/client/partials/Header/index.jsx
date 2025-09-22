@@ -29,13 +29,8 @@ function Header() {
                   </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <NavLink to="/exam" className="header__nav-link">
-                    Exam
-                  </NavLink>
-                </li>
-                <li className="header__nav-item">
-                  <NavLink to="/result" className="header__nav-link">
-                    Result
+                  <NavLink to="/answer" className="header__nav-link">
+                    Answer
                   </NavLink>
                 </li>
               </>

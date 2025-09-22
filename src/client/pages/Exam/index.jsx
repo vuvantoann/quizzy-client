@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getQuestionsByTopic } from '../../services/questions'
 import { getTopicDetail } from '../../services/topic'
 import { useEffect, useState } from 'react'
@@ -8,6 +8,7 @@ import { saveAnswer } from '../../services/answers'
 
 function Exam() {
   const params = useParams()
+  const navigate = useNavigate()
   const [topic, setTopic] = useState({})
   const [questions, setQuestions] = useState([])
   const [selectedAnswers, setSelectedAnswers] = useState([]) // [{ questionId, answer }]
@@ -98,13 +99,12 @@ function Exam() {
     const result = await getUserDetail()
     const payload = {
       userId: result.infoUser._id, // TODO: lấy từ login/token
-      examId: params.id,
+      topicId: params.id,
       answers: selectedAnswers,
     }
     const respond = await saveAnswer(payload)
     if (respond) {
-      console.log('Dữ liệu gửi lên backend:', payload)
-      alert('Bài làm đã được nộp!')
+      navigate(`/result/${respond.data._id}`)
     }
   }
 
