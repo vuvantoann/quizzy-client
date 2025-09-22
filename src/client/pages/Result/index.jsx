@@ -33,7 +33,6 @@ function Result() {
     fetchData()
   }, [params.id])
 
-  console.log(questionsWithAnswers)
   if (questionsWithAnswers.length === 0) {
     return <div className="result__loading">Đang tải kết quả...</div>
   }
