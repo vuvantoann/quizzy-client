@@ -7,9 +7,10 @@ import { checkLogin } from '../../actions/login'
 function Logout() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  deleteCookie('token')
+
   useEffect(() => {
     dispatch(checkLogin(false))
+    deleteCookie('token')
     navigate('/login')
   }, [])
   return <></>

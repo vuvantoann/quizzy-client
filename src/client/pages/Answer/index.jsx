@@ -2,28 +2,35 @@ import { useEffect, useState } from 'react'
 import { getAnswersByUser } from '../../services/answers'
 import { getListTopic } from '../../services/topic'
 import { getUserDetail } from '../../services/users'
-import { Table, Button } from 'antd'
+import { Table, Button, Empty } from 'antd'
 import './Answer.scss'
 import { Link } from 'react-router-dom'
 
 function Answer() {
-  const [dataAnswers, setDataAnswers] = useState()
+  const [dataAnswers, setDataAnswers] = useState([])
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     const fetchApi = async () => {
-      const respond = await getUserDetail()
-      const answersByUserId = await getAnswersByUser(respond.infoUser._id)
+      try {
+        const respond = await getUserDetail()
+        const answersByUserId = await getAnswersByUser(respond.infoUser._id)
+        const topics = await getListTopic()
 
-      const topics = await getListTopic()
-
-      const result = answersByUserId.map((answer) => ({
-        ...topics.find((item) => item._id === answer.topicId),
-        ...answer,
-      }))
-      setDataAnswers(result.reverse())
+        const result = answersByUserId.map((answer) => ({
+          ...topics.find((item) => item._id === answer.topicId),
+          ...answer,
+        }))
+        setDataAnswers(result.reverse())
+      } catch (err) {
+        console.error(err)
+      } finally {
+        setLoading(false)
+      }
     }
-
     fetchApi()
   }, [])
+
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 5,
@@ -75,12 +82,19 @@ function Answer() {
       <Table
         columns={columns}
         dataSource={dataAnswers}
+        loading={loading}
+        locale={{
+          emptyText: (
+            <Empty description="Bạn chưa có bài làm nào, hãy bắt đầu thử sức ngay nhé!" />
+          ),
+        }}
         pagination={{
           current: pagination.current,
           pageSize: pagination.pageSize,
           onChange: (page, pageSize) =>
             setPagination({ current: page, pageSize }),
         }}
+        rowKey="_id"
       />
     </div>
   )
