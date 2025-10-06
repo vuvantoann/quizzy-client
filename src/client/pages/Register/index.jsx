@@ -13,7 +13,6 @@ function Register() {
   const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage()
   const onFinish = async (values) => {
-    console.log(values)
     try {
       const result = await register(values)
       console.log(result)

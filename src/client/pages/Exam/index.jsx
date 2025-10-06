@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import './Exam.scss'
 import { getUserDetail } from '../../services/users'
 import { saveAnswer } from '../../services/answers'
+import { Spin } from 'antd' // Thêm Antd Spin
 
 function Exam() {
   const params = useParams()
@@ -54,7 +55,6 @@ function Exam() {
     }
   }
 
-  // Chọn đáp án → update mảng
   const handleSelectAnswer = (questionId, answerIndex) => {
     setSelectedAnswers((prev) => {
       const existing = prev.find((item) => item.questionId === questionId)
@@ -69,28 +69,6 @@ function Exam() {
     })
   }
 
-  // const handleSelectAnswer = (questionId, answerIndex) => {
-  //   setSelectedAnswers((prev) => {
-  //     // Bước 1: tìm xem đã có câu này chưa
-  //     const found = prev.find((item) => item.questionId === questionId)
-
-  //     if (found) {
-  //       // Bước 2: nếu có rồi -> cập nhật lại câu trả lời
-  //       const updated = prev.map((item) => {
-  //         if (item.questionId === questionId) {
-  //           return { ...item, answer: answerIndex }
-  //         }
-  //         return item
-  //       })
-  //       return updated
-  //     } else {
-  //       // Bước 3: nếu chưa có -> thêm mới
-  //       const newAnswer = { questionId, answer: answerIndex }
-  //       return [...prev, newAnswer]
-  //     }
-  //   })
-  // }
-
   const handleToggleMode = () => {
     setMode((prev) => (prev === 'single' ? 'all' : 'single'))
   }
@@ -98,11 +76,8 @@ function Exam() {
   const handleSubmit = async () => {
     try {
       const result = await getUserDetail()
-      // Lấy userId an toàn
       const userId = result?.infoUser?._id || result?._id
-      if (!userId) {
-        throw new Error('Không tìm thấy userId trong getUserDetail')
-      }
+      if (!userId) throw new Error('Không tìm thấy userId trong getUserDetail')
 
       const payload = {
         userId,
@@ -111,11 +86,9 @@ function Exam() {
       }
 
       const respond = await saveAnswer(payload)
-
       const resultId = respond?.data?._id || respond?._id
-      if (!resultId) {
+      if (!resultId)
         throw new Error('Không tìm thấy resultId trong saveAnswer response')
-      }
 
       navigate(`/result/${resultId}`)
     } catch (err) {
@@ -124,7 +97,11 @@ function Exam() {
   }
 
   if (isLoading) {
-    return <div className="exam__loading">Đang tải câu hỏi...</div>
+    return (
+      <div className="exam__loading">
+        <Spin tip="Đang tải dữ liệu..." size="large" />
+      </div>
+    )
   }
 
   if (questions.length === 0) {
@@ -150,8 +127,7 @@ function Exam() {
                       ? 'active'
                       : ''
                   }
-                  ${isAnswered ? 'answered' : ''}
-                `}
+                  ${isAnswered ? 'answered' : ''}`}
                 onClick={() => setCurrentQuestionIndex(index)}
               >
                 {index + 1}
@@ -184,10 +160,6 @@ function Exam() {
                 </h4>
                 <div className="exam__answers">
                   {question.answers.map((answer, answerIndex) => {
-                    // const isSelected =
-                    //   selectedAnswers.find((a) => a.questionId === question._id)
-                    //     ?.answer === answerIndex
-
                     const found = selectedAnswers.find(
                       (a) => a.questionId === question._id
                     )
